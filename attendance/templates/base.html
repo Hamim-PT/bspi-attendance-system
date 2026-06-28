@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Attendance System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Inter', system-ui, sans-serif;
+}
+
+
+body {
+min-height: 100vh;
+background: linear-gradient(135deg, #0f172a, #020617);
+color: #e5e7eb;
+}
+
+
+.navbar {
+padding: 20px 30px;
+background: linear-gradient(90deg, #1e293b, #020617);
+border-bottom: 1px solid #1f2937;
+}
+
+
+.navbar h1 {
+font-size: 24px;
+font-weight: 700;
+background: linear-gradient(to right, #38bdf8, #22c55e);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+
+.page {
+padding: 40px 20px;
+}
+</style>
+</head>
+<body>
+
+
+<div class="navbar">
+<h1>CST Attendance Portal </h1>
+</div>
+
+
+<div class="page">
+{% block content %}{% endblock %}
+</div>
+
+
+</body>
+</html>

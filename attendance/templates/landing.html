@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APMS - Bangladesh Sweden Polytechnic Institute</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a1720, #1e3a4f, #2a5a7a, #0a1720);
+            background-size: 400% 400%;
+            animation: gradientMove 20s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-card {
+            background: rgba(15, 30, 45, 0.65);
+            backdrop-filter: blur(20px);
+            padding: 55px 80px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            max-width: 620px;
+            animation: cardPop 1.4s ease forwards;
+        }
+
+        @keyframes cardPop {
+            from {
+                opacity: 0;
+                transform: scale(0.85) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .logo img {
+            width: 155px;
+            height: 155px;
+            object-fit: contain;
+            margin-bottom: 25px;
+        }
+
+        .hero-card h1 {
+            font-size: 30px;
+            color: #ffffff;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .hero-card h2 {
+            font-size: 19px;
+            color: #a8d0ff;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .hero-card p {
+            font-size: 17.5px;
+            color: #e0f0ff;
+            margin-bottom: 45px;
+            font-weight: 600;
+        }
+
+        /* Enter Portal Button with Animation */
+        .hero-card button {
+            padding: 17px 60px;
+            font-size: 17.5px;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #00f2ff, #0066ff);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 114, 255, 0.5);
+            transition: all 0.4s ease;
+            animation: buttonEntrance 1.2s ease forwards 0.8s;
+            opacity: 0;
+        }
+
+        @keyframes buttonEntrance {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-card button:hover {
+            transform: translateY(-6px) scale(1.08);
+            box-shadow: 0 20px 45px rgba(0, 150, 255, 0.8);
+            background: linear-gradient(135deg, #00e0ff, #0055ee);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            font-size: 14.5px;
+            color: #a0c8ff;
+            line-height: 1.7;
+        }
+
+        .footer .highlight {
+            color: #ffffff;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-card">
+            <div class="logo">
+                <img src="{% static 'img/logo.png' %}" alt="BSPI Logo">
+            </div>
+            
+            <h1>Bangladesh Sweden Polytechnic Institute</h1>
+            <h2>Computer Science & Technology Department</h2>
+            <p>Attendance & Practical Marks Portal</p>
+
+            <button onclick="window.location.href='{% url 'home' %}'">
+                Enter Portal
+            </button>
+
+            <div class="footer">
+                <span class="highlight">Developed by Hamim</span><br>
+                Student ID: 789173 
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+.form-wrapper {
+  max-width: 480px;
+  margin: 60px auto;
+}
+
+.card {
+  background: linear-gradient(145deg, #020617, #020617);
+  border: 1px solid #1f2937;
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.5);
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 28px;
+  text-align: center;
+  background: linear-gradient(to right, #38bdf8, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.input, .select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #1f2937;
+  background: #020617;
+  color: #e5e7eb;
+  margin-bottom: 22px;
+}
+
+.input:focus, .select:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  color: #fff;
+  transition: all 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.back {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.back:hover {
+  color: #38bdf8;
+}
+</style>
+
+<div class="form-wrapper">
+  <div class="card">
+    <h2 class="title"> Add Student</h2>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <label class="label">Student Name</label>
+      <input type="text" name="name" class="input" placeholder="Enter student name" required>
+
+      <label class="label">Roll No.</label>
+      <input type="text" name="Roll No" class="input" placeholder="Enter roll number" required>
+
+      <label class="label">Subject</label>
+      <select name="subject" class="select" required>
+        {% for subject in subjects %}
+        <option value="{{ subject.id }}">{{ subject.name }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit" class="btn">Add Student</button>
+    </form>
+
+    <a href="{% url 'home' %}" class="back">← Back to Home</a>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .container {
+        max-width: 1100px;
+        margin: 30px auto;
+        padding: 0 20px;
+    }
+
+    .page-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #f1f5f9;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+        margin-bottom: 40px;
+    }
+
+    .stat-card {
+        background: linear-gradient(145deg, #1e2937, #0f172a);
+        border: 1px solid #334155;
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+        transition: all 0.4s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-8px);
+        border-color: #60a5fa;
+    }
+
+    .stat-title {
+        font-size: 15px;
+        color: #94a3b8;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    .stat-value {
+        font-size: 42px;
+        font-weight: 800;
+        color: #22c55e;
+        margin: 0;
+    }
+
+    .marks-value {
+        font-size: 42px;
+        font-weight: 800;
+        color: #38bdf8;
+    }
+
+    .update-card {
+        background: linear-gradient(145deg, #1e2937, #0f172a);
+        border: 1px solid #334155;
+        border-radius: 20px;
+        padding: 32px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .update-card h3 {
+        color: #e2e8f0;
+        margin-bottom: 20px;
+        font-size: 22px;
+    }
+
+    .form-group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .input {
+        flex: 1;
+        max-width: 220px;
+        padding: 14px 18px;
+        border-radius: 14px;
+        border: 1px solid #475569;
+        background: #020617;
+        color: #e2e8f0;
+        font-size: 17px;
+        transition: all 0.3s;
+    }
+
+    .input:focus {
+        outline: none;
+        border-color: #60a5fa;
+        box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+    }
+
+    .update-btn {
+        padding: 14px 32px;
+        border: none;
+        border-radius: 14px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        background: linear-gradient(135deg, #3b82f6, #60a5fa);
+        color: white;
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        transition: all 0.4s ease;
+    }
+
+    .update-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 30px rgba(59, 130, 246, 0.5);
+    }
+</style>
+
+<div class="container">
+    <h2 class="page-title"> {{ student.name }}</h2>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-title">Total Present Days</div>
+            <div class="stat-value">{{ present_days }}</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-title">Sessional Marks</div>
+            <div class="marks-value">{{ mark.marks|default:"0" }}</div>
+        </div>
+    </div>
+
+    <!-- Update Marks -->
+    <div class="update-card">
+        <h3> Update Sessional Marks</h3>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <input 
+                    type="number" 
+                    name="marks" 
+                    value="{{ mark.marks|default:'' }}" 
+                    class="input" 
+                    placeholder="Enter marks"
+                    min="0" 
+                    max="100"
+                    required
+                >
+                <button type="submit" class="update-btn">
+                    Update Marks
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
