@@ -42,15 +42,45 @@ A modern web-based attendance and sessional marks management system.
 ```bash
 git clone https://github.com/Hamim-PT/bspi-attendance-system.git
 cd bspi-attendance-system
-
-### 2. Virtual Environment Create & Activate
-```bash
+```
+### 2. Create & Activate a Virtual Environment
+```Bash
+# Create the virtual environment
 python -m venv venv
 
-# Windows
+# Activate on Windows:
 venv\Scripts\activate
 
-# Mac/Linux
+# Activate on Mac/Linux:
 source venv/bin/activate
+```
+### 3. Install Dependencies
+```bash
+pip install django
+```
+### 4. Setup Database
+``` bash
+python manage.py migrate
+python manage.py createsuperuser
+```
+### 5. Run Server
+```bash
+python manage.py runserver
+```
+Go to: http://127.0.0.1:8000/
+
+### 📁 Project Structure
+```bspi-attendance-system/
+├── attendance/          # Main application logic (Views, Models, Forms)
+├── core/                # Project configurations and settings
+├── static/              # CSS styles, JavaScript files, and UI assets
+├── templates/           # HTML templates for views
+├── manage.py            # Django command-line utility
+├── README.md            # Project documentation
+└── db.sqlite3           # Local development database
+```
+### 📄 License
+This project is for educational purposes.
+
 
 
