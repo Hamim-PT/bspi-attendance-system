@@ -42,3 +42,15 @@ A modern web-based attendance and sessional marks management system.
 ```bash
 git clone https://github.com/Hamim-PT/bspi-attendance-system.git
 cd bspi-attendance-system
+
+### 2. Virtual Environment Create & Activate
+```bash
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# Mac/Linux
+source venv/bin/activate
+
+
